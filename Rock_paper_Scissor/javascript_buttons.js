@@ -1,9 +1,9 @@
 
-const playerText=document.querySelector("#player");
+/*const playerText=document.querySelector("#player");
 const computerText=document.querySelector("#computer");
 const resultText=document.querySelector("#result");
 const humanscore=document.querySelector("#human");
-const computerscore=document.querySelector("#pc");
+const computerscore=document.querySelector("#pc");*/
 const buttons=document.querySelectorAll("button");
 
 let humanChoice;
@@ -39,12 +39,11 @@ buttons.forEach(button => button.addEventListener("click",()=>{
 
     humanChoice=button.textContent;
     computer();
-    playerText.textContent=humanChoice;
-    computerText.textContent=computerChoice;
-
-    resultText.textContent=checkWinner();
-    computerscore.textContent=losses;
-    humanscore.textContent=wins;
+   $("#player").text(humanChoice);
+   $("#computer").text(computerChoice);
+   $("#result").text(checkWinner());
+   $("#human").text(wins);
+   $("#pc").text(losses);
 }));
 
 
