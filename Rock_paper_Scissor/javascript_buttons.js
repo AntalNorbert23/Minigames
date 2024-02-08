@@ -3,8 +3,8 @@
 const computerText=document.querySelector("#computer");
 const resultText=document.querySelector("#result");
 const humanscore=document.querySelector("#human");
-const computerscore=document.querySelector("#pc");*/
-const buttons=document.querySelectorAll("button");
+const computerscore=document.querySelector("#pc");
+const buttons=document.querySelectorAll("button");*/
 
 let humanChoice;
 let computerChoice;
@@ -35,15 +35,25 @@ if (computerChoice===humanChoice){
     return `You won! Congratulations!`;
 }}
 
-buttons.forEach(button => button.addEventListener("click",()=>{
-
-    humanChoice=button.textContent;
+$("button").click(function(){
+    humanChoice=$(this).text();
     computer();
    $("#player").text(humanChoice);
    $("#computer").text(computerChoice);
    $("#result").text(checkWinner());
    $("#human").text(wins);
    $("#pc").text(losses);
-}));
+});
 
 
+/*buttons.forEach(button => button.addEventListener("click",()=>{
+
+    humanChoice=button.textContent;
+    computer();
+    playerText.textContent=humanChoice;
+    computerText.textContent=computerChoice;
+
+    resultText.textContent=checkWinner();
+    computerscore.textContent=losses;
+    humanscore.textContent=wins;
+}));*/
