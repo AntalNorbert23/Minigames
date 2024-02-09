@@ -1,5 +1,4 @@
-const periodictable={
-    elements:[
+const periodictable=[
       {
         shortenedname:"H",
         name:"Hydrogen",
@@ -162,5 +161,34 @@ const periodictable={
         configuration:"1s2-2s2-2p6-3s2-3p6",
         type:"Noble gas",
       },
-    ]
-}
+];
+    const body=document.body;
+    let container=document.createElement("div");
+    container.classList.add("container");
+    body.appendChild(container);
+
+  periodictable.forEach((element,index)=>{
+    //maincontainer create and addclass
+      let maincontainer=document.createElement("div");
+      maincontainer.classList.add("maincontainer");
+      container.appendChild(maincontainer);
+
+    //thecard create and addclass
+      let thecard=document.createElement("div");
+      thecard.classList.add("thecard");
+      maincontainer.appendChild(thecard);
+
+    //front and back of the cards
+      let frontdiv=document.createElement("div");
+      frontdiv.classList.add("frontdiv");
+      let backdiv=document.createElement("div");
+      backdiv.classList.add("frontdiv");
+      thecard.appendChild(frontdiv);
+      thecard.appendChild(backdiv);
+
+    //create text for cards and insert it
+      let shortnameP=document.createElement("p");
+      let shorthameText=document.createTextNode(element.shortenedname);
+      frontdiv.appendChild(shortnameP);
+      shortnameP.appendChild(shorthameText);
+  })
