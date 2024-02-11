@@ -12,10 +12,14 @@ body{
    display:flex;
    justify-content: space-between;
 }
+.container4,.container5{
+   display: flex;
+   justify-content: space-evenly;
+}
 /*Adding for every container a bit of margin so it does not stick to it*/
 .container1,.container2,.container3,.container4,.container5,.container6,.container7,.container8,.container9{
-   margin-left:10px;
-   margin-right:10px;
+   margin-left:5px;
+   margin-right:5px;
 }
 
 
@@ -26,8 +30,8 @@ body{
 .maincontainer{
   position: relative;
   margin:3px;
-  min-width: 90px;
-  min-height:95px;
+  min-width: 78.5px;
+  min-height:75px;
 }
 .thecard{
    position: absolute;
@@ -75,14 +79,16 @@ body{
    margin:0;
 }
 .fullname{
+   font-size: 13.5px;
    font-weight: 700;
+   text-decoration: underline;
 }
 .atomicnr,.atomicmass{
-   font-size: 13px;
-   font-weight:700;
+   font-size: 12px;
+   font-weight:300;
 }
 .configuration{
-   font-size:12px;
+   font-size:10px;
 }
 
 /*adding styling to different cards*/
@@ -102,7 +108,7 @@ body{
    box-shadow:5px 5px 5px rgba(244,101,0,0.7);
    border-radius: 5px;
 }
-.Alkaliearthmetal{
+.Alkalineearthmetal{
    background-color: rgb(252,202,20);
    box-shadow:5px 5px 5px rgba(252,202,20,0.7);
    border-radius: 5px;
