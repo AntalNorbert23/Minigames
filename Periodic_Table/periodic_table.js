@@ -503,6 +503,145 @@ const periodictable=[
     configuration:"[Xe]]6s2",
     type:"Alkaline-earth-metal",
   },
+  {
+    shortenedname:"La-Lu",
+    name:"Lanthanide",
+  },
+  {
+    shortenedname:"Hf",
+    name:"Hafnium",
+    a:178,
+    z:72,
+    n:106,
+    configuration:"[Kr]4d2-5s2",//Add config from here!!!
+    type:"Transition-metal",
+  },
+  {
+    shortenedname:"Ta",
+    name:"Tantalum",
+    a:181,
+    z:73,
+    n:108,
+    configuration:"[Kr]4d4-5s1",
+    type:"Transition-metal",
+  },
+  {
+    shortenedname:"W",
+    name:"Tungsten",
+    a:184,
+    z:74,
+    n:110,
+    configuration:"[Kr]4d5-5s1",
+    type:"Transition-metal",
+  },
+  {
+    shortenedname:"Re",
+    name:"Rhenium",
+    a:186,
+    z:75,
+    n:111,
+    configuration:"[Kr]4d5-5s2",
+    type:"Transition-metal",
+  },
+  {
+    shortenedname:"Os",
+    name:"Osmium",
+    a:190,
+    z:76,
+    n:114,
+    configuration:"[Kr]4d7-5s1",
+    type:"Transition-metal",
+  },
+  {
+    shortenedname:"Ir",
+    name:"Iridium",
+    a:192,
+    z:77,
+    n:115,
+    configuration:"[Kr]4d8-5s1",
+    type:"Transition-metal",
+  },
+  {
+    shortenedname:"Pt",
+    name:"Platinum",
+    a:195,
+    z:78,
+    n:118,
+    configuration:"[Kr]4d10",
+    type:"Transition-metal",
+  },
+  {
+    shortenedname:"Au",
+    name:"Gold",
+    a:197,
+    z:79,
+    n:119,
+    configuration:"[Kr]4d10-5s1",
+    type:"Transition-metal",
+  },
+  {
+    shortenedname:"Hg",
+    name:"Mercury",
+    a:201,
+    z:80,
+    n:122,
+    configuration:"[Kr]4d10-5s2",
+    type:"Transition-metal",
+  },
+  {
+    shortenedname:"Tl",
+    name:"Thallium",
+    a:204,
+    z:81,
+    n:124,
+    configuration:"[Kr]4d10-5s2-5p1",
+    type:"Metal",
+  },
+  {
+    shortenedname:"Pb",
+    name:"Lead",
+    a:207,
+    z:82,
+    n:125,
+    configuration:"[Kr]4d10-5s2-5p2",
+    type:"Metal",
+  },
+  {
+    shortenedname:"Bi",
+    name:"Bismuth",
+    a:209,
+    z:83,
+    n:126,
+    configuration:"[Kr]4d10-5s2-5p3",
+    type:"Metal",
+  },
+  {
+    shortenedname:"Po",
+    name:"Polonium",
+    a:209,
+    z:84,
+    n:125,
+    configuration:"[Kr]4d10-5s2-5p4",
+    type:"Metalloid",
+  },
+  {
+    shortenedname:"At",
+    name:"Astatine",
+    a:210,
+    z:85,
+    n:125,
+    configuration:"[Kr]4d10-5s2-5p5",
+    type:"Halogen",
+  },
+  {
+    shortenedname:"Rn",
+    name:"Xenon",
+    a:222,
+    z:86,
+    n:136,
+    configuration:"[Kr]4d10-5s2-5p6",
+    type:"Noble gas",
+  },
 ];
     const body=document.body;
     //create rows (containers) for the elements
@@ -536,8 +675,6 @@ const periodictable=[
     body.appendChild(container5);
     body.appendChild(container6);
     body.appendChild(container7);
-    body.appendChild(container8);
-    body.appendChild(container9);
 
   //create subcontainers
     //second row
@@ -624,6 +761,8 @@ const periodictable=[
         container4.appendChild(maincontainer);
     }else if(index>35 && index<=53){
         container5.appendChild(maincontainer);
+    }else if(index>53 && index<=85){
+        container6.appendChild(maincontainer);
     }
    
 
@@ -649,4 +788,18 @@ const periodictable=[
    }else if(element.type==="Actinide"){
       maincontainer.classList.add("Actinide");
    }
-  })
+
+   //Add mouseover append lanthanide to bottom on Lanthanide
+
+   if(element.name==="Lanthanide"){
+      maincontainer.addEventListener("mouseover",function(){
+          $(container8).appendTo(body).show("slow");
+        })
+   }else if(element.name==="Actinide"){
+      maincontainer.addEventListener("mouseover",function(){
+          $(container9).appendTo(body).show("slow");
+    })
+   }
+
+})
+ 
