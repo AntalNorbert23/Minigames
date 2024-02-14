@@ -32,17 +32,14 @@ body{
  margin-right:5px;
  margin-left: 5px;
 }
-
-.activemargin{
-   margin-left:0;
-   margin-right:0;
-}
+/*Title of the project*/
 #title{
    display: flex;
    justify-content: center;
    text-transform: uppercase;
    text-decoration:double underline;
 }
+/*Adding the cards*/
 .maincontainer{
   position: relative;
   margin:3px;
@@ -122,9 +119,6 @@ body{
 .configuration{
    font-size:9px;
    text-align: center;
-}
-.configurationsmall{
-   font-size:8px;
 }
 
 /*adding styling to different cards*/

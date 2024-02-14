@@ -1,3 +1,4 @@
+//elements
 const periodictable=[
   {
     shortenedname:"H",
@@ -1113,12 +1114,10 @@ const periodictable=[
     let subcontainer3_1=document.createElement("div");
     let subcontainer3_2=document.createElement("div");
 
-  //append subcontainers to the matching container and add their class
+  //append subcontainers to the matching container 
     //second row
     container2.appendChild(subcontainer2_1);
     container2.appendChild(subcontainer2_2);
-    subcontainer2_1.classList.add("subcontainer2_1");
-    subcontainer2_2.classList.add("subcontainer2_2");
     //third row
     container3.appendChild(subcontainer3_1);
     container3.appendChild(subcontainer3_2);
@@ -1142,7 +1141,7 @@ const periodictable=[
       thecard.appendChild(frontdiv);
       thecard.appendChild(backdiv);
 
-    //create text for cards and insert it
+    //create text for cards and append it
       //front of the card
       let shortnameP=document.createElement("p");
       let shorthameText=document.createTextNode(element.shortenedname);
@@ -1224,9 +1223,9 @@ const periodictable=[
       maincontainer.classList.add("Actinide");
    }
 
-   //Add mouseover append lanthanide to bottom on Lanthanide
+   //Add click event to Actinide and Lanthanide so when clicked it will show
    if(element.name==="Lanthanide" || element.name==="Actinide"){
-        maincontainer.addEventListener("click",function(){
+        $(maincontainer).on("click",()=>{
             $(container8).toggle("slow");
             $(container8).css({"display":"flex","justify-content":"center"});
             $(container9).toggle("slow");
@@ -1235,7 +1234,8 @@ const periodictable=[
             $(container2).toggle("slow");
         })
    }
+   //If element name is too long add another class that has a smaller font size so it remains in the div and does not overflow
   if(element.name.length>=10){
-      fullname.classList.add("fullnamesmall");
+      $(fullname).addClass("fullnamesmall");
    }
 })
