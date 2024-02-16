@@ -8,80 +8,13 @@
 </head>
 <body>
     <div class="titlecontainer">
-        <h1>Solve the Puzzle! <span id="timer">Timer</span></h1>
-        <button>Reset</button>
+        <h1>Solve the Puzzle! <span id="timer">Timer</span> &nbsp; Turns: <span id="turns">0</span></h1>
+        <button id="buton">Reset</button>
     </div>
     <main>
-
-        <div class="outercontainer">
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-        </div>
-
-        <div id="gridcontainer">
-            <div class="container">
-                <img src="images/1-10.jpg" alt="1" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-16.jpg" alt="2" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-2.jpg" alt="3" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-11.jpg" alt="4" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-1.jpg" alt="5" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-4.jpg" alt="6" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-7.jpg" alt="7" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-15.jpg" alt="8" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-5.jpg" alt="9" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-12.jpg" alt="10" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-8.jpg" alt="11" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-13.jpg" alt="12" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-3.jpg" alt="13" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-6.jpg" alt="14" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-9.jpg" alt="15" class="draggable" draggable="true">
-            </div>
-            <div class="container">
-                <img src="images/1-14.jpg" alt="16" class="draggable" draggable="true">
-            </div>
-        </div>
+        <div id="outercontainer"></div>
+        <img src="images/final.jpg" alt="final landscape" id="fullpic">
+        <div id="gridcontainer"></div>
     </main>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="picturepuzzle.js"></script>

@@ -5,6 +5,9 @@ body{
     box-sizing: border-box;
     overflow: hidden;
 }
+img{
+    max-width: 150px;
+}
 .titlecontainer{
     display: flex;
     margin-left:50px;
@@ -14,6 +17,10 @@ button{
     padding:10px;
     margin-left:10px;
     border-radius:5px;
+    background-color: rgb(65, 65, 217);
+    color:black;
+    font-size: large;
+    font-weight: 1000;
 }
 button:hover{
     cursor:pointer;
@@ -24,32 +31,24 @@ main{
     display: flex;
     justify-content: space-between;
 }
-.outercontainer{
-    display: grid;
-    grid-template-columns:repeat(4, minmax(0, 1fr));
-    grid-template-rows: repeat(4, minmax(0, 1fr));
+main #fullpic{
+    display: none;
+    align-self: center;
+}
+#outercontainer{
+    display: flex;
+    flex-wrap: wrap;
     border: 2px solid black;
-    height: 600px;
-    width:600px;
     max-width:600px;
     max-height:600px;
     margin-left:50px;
 }
 #gridcontainer{
-    display: grid;
-    grid-template-columns:repeat(4, minmax(0, 1fr));
-    grid-template-rows: repeat(4, minmax(0, 1fr));
-    gap:5px;
-    margin-right:20px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width:600px;
+    max-height:600px;
+    margin-right:30px;
     margin-bottom:20px;
 }
-.container{
-    height:150px;
-    width:150px;
-    max-height:150px;
-    max-width:150px;
-}
-.draggable{
-    max-width: 150px;
-    max-height: 150px;
-}
+

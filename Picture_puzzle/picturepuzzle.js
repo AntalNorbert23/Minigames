@@ -1,75 +1,127 @@
-const draggableimg= document.querySelectorAll(".draggable");
-const containers=document.querySelectorAll(".container");
 
-
-//timer 
-
+//timer variables
 let timercontent=document.querySelector("#timer");
+let resetbtn=document.querySelector("#buton")
+let startminutes=1.5;
+let time=startminutes*60;
+let intervalid;
 
-let startTime=0;
-let elapsedTime=0;
-let currentTime=0;
-let paused=true;
-let intervalId;
-let hours=0;
-let minutes=0;
-let seconds=0;
-let n=0;
+//pictureboard variables
+let rows=4;
+let columns=4;
+let currentPicture;
+let otherPicture;
+let turns=0;
 
+//countdown timer function
 function updateTime(){
-    elapsedTime=Date.now()-startTime;
-
+    let minutes=Math.floor(time / 60);
+    let seconds=time % 60;
+        
+        //pad with zero
         function padwithZero(unit){
                 return (("0")+unit).length >2 ? unit  : "0" + unit;
         }
-    seconds=Math.floor( (elapsedTime/1000) % 60);
-    minutes=Math.floor( (elapsedTime/(1000*60)) % 60);
-    hours=Math.floor( (elapsedTime/(1000*60*60)) % 60);
-
+    
     seconds=padwithZero(seconds);
     minutes=padwithZero(minutes);
-    hours=padwithZero(hours);
 
-    timercontent.textContent=`${hours}:${minutes}:${seconds}`
+    timercontent.textContent=`${minutes}:${seconds}`
+    time--;
+
+    //check if there is no time left
+    if(minutes==0 && seconds==0){
+        timercontent.textContent="Check the picture, if is same you won!";
+        clearInterval(intervalid);
+        document.querySelector("#fullpic").style.display="block";
+        document.querySelectorAll("img").forEach((image)=>image.style.pointerEvents="none");
+    }
 }
 
-draggableimg.forEach((draggable)=>{
-    draggable.addEventListener("dragstart",()=>{
-        draggable.classList.add("imgdragged");
-        if(paused){
-            paused=false;
-            startTime=Date.now()-elapsedTime;
-            intervalId=setInterval(updateTime,75);
-        }
-    })
+//start the countdown after four seconds 
+setTimeout(()=>{intervalid=setInterval(updateTime,1000)},4000);
+  
+
+//reset button
+resetbtn.addEventListener("click",()=>{
+    window.location.reload();
 })
-containers.forEach(container=>{
-    if(container.length>0){
-        paused=true;
-    elapsedTime=Date.now()-startTime;
-    clearInterval(intervalId);
+
+//drag function of the event listeners
+function dragStart(){
+    currentPicture=this;
+}
+
+function dragOver(event){
+    event.preventDefault();
+}
+
+function dragEnter(event){
+    event.preventDefault();
+}
+
+function dragDrop() {
+    otherPicture = this; 
+}
+function dragEnd(){
+    if(currentPicture.src.includes("blank")){
+        return;
     }
-})
+    let currentimg=currentPicture.src;
+    let otherimg=otherPicture.src;
+    currentPicture.src=otherimg;
+    otherPicture.src=currentimg;
 
-draggableimg.forEach((draggable)=>{
-    draggable.addEventListener("dragend",()=>{
-        n++;
-        console.log(n);
-        draggable.classList.remove("imgdragged");
-    })
-})
-
-containers.forEach(container => {
-    container.addEventListener('dragover', e => {
-      e.preventDefault();
-      const draggable = document.querySelector('.imgdragged');
-        container.appendChild(draggable);
-    })
-  })
+    turns+=1;
+    document.getElementById("turns").textContent=turns;
+}
 
 
-  /*if(n===16 &&!paused){
-    paused=true;
-    elapsedTime=Date.now()-startTime;
-    clearInterval(intervalId);
-}*/
+//create the board where the pics should be put to complete the puzzle;
+window.onload=function(){
+    for(r=0; r<rows; r++){
+        for(c=0; c<columns;c++){
+            let picture=document.createElement("img");
+            picture.src="./images/blankpic.jpg";
+
+
+            picture.addEventListener("dragstart",dragStart);
+            picture.addEventListener("dragover",dragOver);
+            picture.addEventListener("dragenter",dragEnter);
+            picture.addEventListener("drop",dragDrop);
+            picture.addEventListener("dragend",dragEnd);
+
+            document.getElementById("outercontainer").appendChild(picture);
+        }
+    }
+}
+
+//create the place where the starter images are put 
+let picturetodrag=[];
+for(let i=1; i<=rows*columns;i++){
+    picturetodrag.push(i.toString());
+}
+
+//shuffle the pictures randomly
+picturetodrag.reverse();
+
+for(let i=0; i<picturetodrag.length;i++){
+    let j=Math.floor(Math.random()*picturetodrag.length);
+
+    let tmp=picturetodrag[i];
+    picturetodrag[i]=picturetodrag[j];
+    picturetodrag[j]=tmp;
+}
+
+for(let i=0; i<picturetodrag.length;i++){
+    let picture=document.createElement("img");
+    picture.src="./images/"+picturetodrag[i]+".jpg";
+
+    picture.addEventListener("dragstart",dragStart);
+    picture.addEventListener("dragover",dragOver);
+    picture.addEventListener("dragenter",dragEnter);
+    picture.addEventListener("drop",dragDrop);
+    picture.addEventListener("dragend",dragEnd);
+
+    document.getElementById("gridcontainer").appendChild(picture);
+}
