@@ -21,7 +21,7 @@ function updateTime(){
         
         //pad with zero
         function padwithZero(unit){
-                return (("0")+unit).length >2 ? unit  : "0" + unit;
+                return (("0") + unit).length >2 ? unit  : "0" + unit;
         }
     
     seconds=padwithZero(seconds);
