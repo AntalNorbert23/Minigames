@@ -1,8 +1,9 @@
 
 //timer variables
 let timercontent=document.querySelector("#timer");
-let resetbtn=document.querySelector("#buton")
-let startminutes=1.5;
+let resetbtn=document.querySelector("#buton");
+let stopbtn=document.querySelector("#stop");
+let startminutes=0.75;
 let time=startminutes*60;
 let intervalid;
 
@@ -26,12 +27,12 @@ function updateTime(){
     seconds=padwithZero(seconds);
     minutes=padwithZero(minutes);
 
-    timercontent.textContent=`${minutes}:${seconds}`
+    timercontent.textContent=`${minutes}:${seconds}`;
     time--;
 
     //check if there is no time left
     if(minutes==0 && seconds==0){
-        timercontent.textContent="Check the picture, if is same you won!";
+        timercontent.textContent="Check the picture, if it is the same you won!";
         clearInterval(intervalid);
         document.querySelector("#fullpic").style.display="block";
         document.querySelectorAll("img").forEach((image)=>image.style.pointerEvents="none");
@@ -39,12 +40,20 @@ function updateTime(){
 }
 
 //start the countdown after four seconds 
-setTimeout(()=>{intervalid=setInterval(updateTime,1000)},4000);
+setTimeout(()=>{intervalid=setInterval(updateTime,1000)},3000);
   
 
 //reset button
 resetbtn.addEventListener("click",()=>{
     window.location.reload();
+   
+})
+//stop button
+stopbtn.addEventListener("click",()=>{
+    clearInterval(intervalid);
+    timercontent.textContent=`${timercontent.textContent} Check the picture, if it is the same you won!`;
+    document.querySelector("#fullpic").style.display="block";
+    document.querySelectorAll("img").forEach((image)=>image.style.pointerEvents="none");
 })
 
 //drag function of the event listeners
